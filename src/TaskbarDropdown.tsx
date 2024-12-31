@@ -4,19 +4,19 @@ function TaskbarDropdown({ title, items }) {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <div className="relative w-24">
+        <div className="relative w-24 text-[var(--text)]">
             <button
-                className="w-full text-left pl-2 border rounded-sm bg-[var(--background-hover)] border-[var(--background-secondary)] hover:border-[var(--foreground)] hover:bg-[var(--background-secondary-hover)]"
+                className="w-full text-left pl-2 border border-transparent rounded-sm bg-[var(--background-indent)] hover:border-[var(--accent)] hover:bg-[var(--background-secondary-hover)] hover:font-semibold"
                 onClick={() => setIsOpen(!isOpen)}
             >
                 {title}
             </button>
             {isOpen && (
-                <ul className="absolute bg-[var(--background)] w-fit z-50 border rounded-md shadow-lg">
+                <ul className="absolute bg-[var(--background-indent)] w-fit z-50 border rounded-sm shadow-lg">
                     {items.map((item, index) => (
                         <li
                             key={index}
-                            className="pb-2 pr-20 border border-transparent hover:border-[var(--foreground)] hover:bg-[var(--background-secondary-hover)] cursor-pointer"
+                            className="pb-2 pl-1 pr-20 border border-transparent rounded-sm hover:border-[var(--accent)] hover:bg-[var(--background-secondary-hover)] hover:font-semibold cursor-pointer"
                             onClick={() => {
                                 item.onClick && item.onClick();
                                 setIsOpen(false); // Close the dropdown after selection
