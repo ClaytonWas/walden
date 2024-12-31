@@ -35,7 +35,7 @@ function Taskbar() {
                     ]}
                 />
             </nav>
-            <p className="px-2">Built with Tauri v{tauriVersion}</p>
+            <p className="px-2 text-[var(--text)]">Built with Tauri v{tauriVersion}</p>
         </div>
     );
 }

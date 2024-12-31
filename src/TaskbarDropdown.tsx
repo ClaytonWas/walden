@@ -12,7 +12,7 @@ function TaskbarDropdown({ title, items }) {
                 {title}
             </button>
             {isOpen && (
-                <ul className="absolute bg-[var(--background-indent)] w-fit z-50 border rounded-sm shadow-lg">
+                <ul className="absolute bg-[var(--background-indent)] w-fit z-50 border border-[var(--background)] rounded-xs shadow-lg">
                     {items.map((item, index) => (
                         <li
                             key={index}

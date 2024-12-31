@@ -16,12 +16,12 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #262626;
-    --background-indent: #4f4d50;
+    --background-indent: #323030;
     --background-secondary: #373737;
     --background-secondary-hover: #4b4848;
-    --accent: #eeeeff;
+    --accent: #c89eed;
     --accent-hover: #947bd3;
     --accent-hover-secondary: #7f63c7;
-    --text: #eeeeee;
+    --text: #efe8f2;
   }
 }
