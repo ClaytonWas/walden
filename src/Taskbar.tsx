@@ -1,5 +1,6 @@
 import React from "react";
 import { getTauriVersion } from '@tauri-apps/api/app'
+import { invoke } from '@tauri-apps/api/core';
 import Dropdown from "./TaskbarDropdown";
 import "./App.css";
 
@@ -7,12 +8,12 @@ const tauriVersion = await getTauriVersion();
 
 function Taskbar() {
     return (
-        <div className="justify-between bg-[var(--background)] w-full flex">
-            <nav className="relative flex bg-[var(--background)] gap-1">
+        <div className="justify-between bg-[var(--background)] w-full flex px-2 py-1 text-lg">
+            <nav className="relative flex bg-[var(--background)] gap-2">
                 <Dropdown
                     title="File"
                     items={[
-                        { label: "Open", onClick: () => console.log("Open clicked") },
+                        { label: "Open", onClick: () => invoke("open") },
                         { label: "Export", onClick: () => console.log("Export clicked") },
                     ]}
                 />
@@ -35,7 +36,7 @@ function Taskbar() {
                     ]}
                 />
             </nav>
-            <p className="px-2 text-[var(--text)]">Built with Tauri v{tauriVersion}</p>
+            <p className="px-2 text-[var(--text)] select-none">Built with Tauri v{tauriVersion}</p>
         </div>
     );
 }

@@ -18,8 +18,6 @@ function App() {
       <Taskbar />
       <CanvasViewport />
       
-      <p>Click on the Tauri, Vite, and React logos to learn more.</p>
-
       <form
         onSubmit={(e) => {
           e.preventDefault();

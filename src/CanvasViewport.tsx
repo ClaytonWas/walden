@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./App.css";
 
 function CanvasViewport() {
@@ -58,22 +58,33 @@ function CanvasViewport() {
         updateTransform();
     };
 
+    useEffect(() => {
+        const element = canvasDivRef.current;
+        if (element) {
+            element.addEventListener("wheel", handleWheel, { passive: false });
+
+            // Cleanup
+            return () => {
+                element.removeEventListener("wheel", handleWheel);
+            };
+        }
+    }, [handleWheel]);
+
     return (
+        <div
+            className="h-[calc(80vh)] w-4/5 cursor-grab overflow-hidden active:cursor-grabbing bg-[var(--background-secondary-hover)]"
+            onMouseDown={handleMouseDown}
+            onMouseMove={handleMouseMove}
+            onMouseUp={handleMouseUpOrLeave}
+            onMouseLeave={handleMouseUpOrLeave}
+        >
             <div
-                className="h-[calc(80vh)] w-4/5 cursor-grab overflow-hidden active:cursor-grabbing bg-[var(--background-secondary-hover)]"
-                onMouseDown={handleMouseDown}
-                onMouseMove={handleMouseMove}
-                onMouseUp={handleMouseUpOrLeave}
-                onMouseLeave={handleMouseUpOrLeave}
-                onWheel={handleWheel}
+                ref={canvasDivRef}
+                className="flex justify-center items-center h-full"
             >
-                <div
-                    ref={canvasDivRef}
-                    className="flex justify-center items-center h-full"
-                >
-                    <canvas id="imageCanvas" className="bg-[var(--counter-intensity)]"></canvas>
-                </div>
+                <canvas id="imageCanvas" className="bg-[var(--counter-intensity)]"></canvas>
             </div>
+        </div>
     );
 }
 
