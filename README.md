@@ -7,8 +7,8 @@ A webview desktop application that serves a photo manipulation user interface to
 
 This code is currently being adapted from [WebAppPhotoEdits](https://github.com/ClaytonWas/WebAppPhotoEdits) into a more performant back-end with context provided by an imagefile and HTML canvas. 
 
-### Deployed Website
-[Deployed Website](https://webappphotoedits.onrender.com/). <br >
+![Example Image](./readme_images/1.png)
+[Deployed Website](https://webappphotoedits.onrender.com/) (previous build) <br >
 This may require some time open to reawaken the render instance.
 
 ### Installation
