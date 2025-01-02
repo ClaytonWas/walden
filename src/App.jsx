@@ -1,7 +1,7 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
 import { invoke } from "@tauri-apps/api/core";
 import Taskbar from "./Taskbar";
+import CanvasViewport from "./CanvasViewport";
 import "./App.css";
 
 function App() {
@@ -16,7 +16,8 @@ function App() {
   return (
     <main>
       <Taskbar />
-
+      <CanvasViewport />
+      
       <p>Click on the Tauri, Vite, and React logos to learn more.</p>
 
       <form
