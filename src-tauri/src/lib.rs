@@ -1,3 +1,7 @@
+extern crate libraw_sys;
+
+use libraw_sys::{libraw_init, libraw_recycle};
+
 // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
 #[tauri::command]
 fn greet(name: &str) -> String {
@@ -15,5 +19,14 @@ pub fn run() {
 
 #[tauri::command]
 fn open() {
-    println!("Open Called")
+    unsafe {
+        let raw_processor = libraw_init(0);
+        if raw_processor.is_null() {
+            println!("Failed to initialize LibRaw");
+        } else {
+            println!("LibRaw initialized successfully");
+            libraw_recycle(raw_processor);
+        }
+    }
+    println!("Open Called");
 }

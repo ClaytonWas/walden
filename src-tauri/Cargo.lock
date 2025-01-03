@@ -1132,6 +1132,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "gcc"
+version = "0.3.55"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "8f5f3913fa0bfe7ee1fd8248b6b9f42a5af4b9d65ec2dd2c3c26132b950ecfc2"
+
+[[package]]
 name = "gdk"
 version = "0.18.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1944,6 +1950,17 @@ checksum = "b67380fd3b2fbe7527a606e18729d21c6f3951633d0500574c4dc22d2d638b9f"
 dependencies = [
  "cfg-if",
  "winapi",
+]
+
+[[package]]
+name = "libraw-sys"
+version = "0.1.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "2ce585bb471999562db6ee98dbf684a3e7acf42d837c76d54941a6db840b43ca"
+dependencies = [
+ "gcc",
+ "libc",
+ "pkg-config",
 ]
 
 [[package]]
@@ -4214,6 +4231,7 @@ dependencies = [
 name = "walden"
 version = "0.1.0"
 dependencies = [
+ "libraw-sys",
  "serde",
  "serde_json",
  "tauri",
