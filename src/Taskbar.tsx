@@ -13,11 +13,11 @@ function Taskbar() {
                 <Dropdown
                     title="File"
                     items={[
-                        { label: "Open", onClick: () => invoke("open") },
+                        { label: "Open", onClick: () => recieveImage() },
                         { label: "Export", onClick: () => console.log("Export clicked") },
                     ]}
                 />
-                
+
                 <Dropdown
                     title="Insert"
                     items={[
@@ -42,3 +42,25 @@ function Taskbar() {
 }
 
 export default Taskbar;
+
+function recieveImage() {
+    let fileInput = document.createElement("input");
+    fileInput.type = "file";
+    fileInput.accept = "image/*"
+    
+    fileInput.addEventListener("change", async () => {
+        if(fileInput.files?.length === 1) {
+            const arrayBuffer = await fileInput.files[0].arrayBuffer();
+            const uint8Array = new Uint8Array(arrayBuffer);
+            const pixelIntensitiesArray = Array.from(uint8Array);
+            try {
+                await invoke("open", { uint8Array: pixelIntensitiesArray })
+                console.log("File sent to backend.");
+            } catch (error) {
+                console.error("Error invoking open command:", error);
+            }
+        }
+    })
+
+    fileInput.click()
+}

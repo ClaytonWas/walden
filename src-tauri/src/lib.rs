@@ -18,15 +18,8 @@ pub fn run() {
 }
 
 #[tauri::command]
-fn open() {
-    unsafe {
-        let raw_processor = libraw_init(0);
-        if raw_processor.is_null() {
-            println!("Failed to initialize LibRaw");
-        } else {
-            println!("LibRaw initialized successfully");
-            libraw_recycle(raw_processor);
-        }
-    }
-    println!("Open Called");
+fn open(uint8Array: Vec<u8>) -> Result<String, String>{
+    println!("Received array of length: {}", uint8Array.len());
+    let base64_encoded = format!("{:?}", uint8Array);
+    Ok(base64_encoded)
 }
